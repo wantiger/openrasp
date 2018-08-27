@@ -64,6 +64,7 @@ PHP_INI_ENTRY1("openrasp.timeout_ms", "100", PHP_INI_SYSTEM, OnUpdateOpenraspInt
 PHP_INI_ENTRY1("openrasp.block_status_code", "302", PHP_INI_SYSTEM, OnUpdateOpenraspIntGEZero, &openrasp_ini.block_status_code)
 PHP_INI_ENTRY1("openrasp.plugin_maxstack", "100", PHP_INI_SYSTEM, OnUpdateOpenraspIntGEZero, &openrasp_ini.plugin_maxstack)
 PHP_INI_ENTRY1("openrasp.log_maxstack", "10", PHP_INI_SYSTEM, OnUpdateOpenraspIntGEZero, &openrasp_ini.log_maxstack)
+<<<<<<< HEAD
 PHP_INI_ENTRY1("openrasp.backend_url", nullptr, PHP_INI_SYSTEM, OnUpdateOpenraspCString, &openrasp_ini.backend_url)
 PHP_INI_ENTRY1("openrasp.plugin_update_interval", "60", PHP_INI_SYSTEM, OnUpdateOpenraspIntGEZero, &openrasp_ini.plugin_update_interval)
 PHP_INI_ENTRY1("openrasp.log_push_interval", "10", PHP_INI_SYSTEM, OnUpdateOpenraspIntGEZero, &openrasp_ini.log_push_interval)
@@ -71,6 +72,9 @@ PHP_INI_ENTRY1("openrasp.clientip_header", "clientip", PHP_INI_SYSTEM, OnUpdateO
 PHP_INI_ENTRY1("openrasp.app_id", nullptr, PHP_INI_SYSTEM, OnUpdateOpenraspCString, &openrasp_ini.app_id)
 PHP_INI_ENTRY1("openrasp.log_max_backup", "30", PHP_INI_SYSTEM, OnUpdateOpenraspIntGEZero, &openrasp_ini.log_max_backup)
 PHP_INI_ENTRY1("openrasp.plugin_update_enable", "1", PHP_INI_SYSTEM, OnUpdateOpenraspBool, &openrasp_ini.plugin_update_enable)
+=======
+PHP_INI_ENTRY1("openrasp.clientip_header", "clientip", PHP_INI_SYSTEM, OnUpdateOpenraspCString, &openrasp_ini.clientip_header)
+>>>>>>> master
 PHP_INI_END()
 
 PHP_GINIT_FUNCTION(openrasp)
@@ -130,9 +134,12 @@ PHP_MSHUTDOWN_FUNCTION(openrasp)
         result = PHP_MSHUTDOWN(openrasp_hook)(SHUTDOWN_FUNC_ARGS_PASSTHRU);
         result = PHP_MSHUTDOWN(openrasp_v8)(SHUTDOWN_FUNC_ARGS_PASSTHRU);
         result = PHP_MSHUTDOWN(openrasp_log)(SHUTDOWN_FUNC_ARGS_PASSTHRU);
+<<<<<<< HEAD
 #ifdef HAVE_OPENRASP_REMOTE_MANAGER
         openrasp::oam.shutdown();
 #endif
+=======
+>>>>>>> master
         is_initialized = false;
     }
     UNREGISTER_INI_ENTRIES();
